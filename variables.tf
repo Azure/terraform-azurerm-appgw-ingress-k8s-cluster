@@ -4,20 +4,10 @@ variable "aks_service_principal_app_id" {
 
 }
 
-# variable "kubernetes_client_id" {
-#   description = "Service Principal App Id"
-#   default = "665d5c59-0006-44f7-bf4c-56bc5d3b315e"
-# }
-
-
 variable "aks_service_principal_client_secret" {
     description = "Secret of the service principal. Used by AKS to manage Azure."
     default = "uuWqyDLq+ki18BtrJiu3cAQFeGYKQghtQnoHlI8/Svg="
 }
-# variable "kubernetes_client_secret" {
-#   description="Service princiapal secret"
-#   default = "uuWqyDLq+ki18BtrJiu3cAQFeGYKQghtQnoHlI8/Svg="
-# }
 
 variable "aks_service_principal_object_id" {
      description = "Object ID of the service principal."

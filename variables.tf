@@ -1,17 +1,17 @@
 variable "aks_service_principal_app_id" {
     description = "Application ID/Client ID  of the service principal. Used by AKS to manage AKS related resources on Azure like vms, subnets."
-    default = "665d5c59-0006-44f7-bf4c-56bc5d3b315e"
+    default = ""
 
 }
 
 variable "aks_service_principal_client_secret" {
     description = "Secret of the service principal. Used by AKS to manage Azure."
-    default = "uuWqyDLq+ki18BtrJiu3cAQFeGYKQghtQnoHlI8/Svg="
+    default = ""
 }
 
 variable "aks_service_principal_object_id" {
      description = "Object ID of the service principal."
-     default = "5aa4189b-f031-4eca-8098-ae02c41a9c92"
+     default = ""
   
 }
 

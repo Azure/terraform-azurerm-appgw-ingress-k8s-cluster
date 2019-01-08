@@ -6,6 +6,7 @@ locals {
   http_setting_name              = "${azurerm_virtual_network.test.name}-be-htst"
   listener_name                  = "${azurerm_virtual_network.test.name}-httplstn"
   request_routing_rule_name      = "${azurerm_virtual_network.test.name}-rqrt"
+
   #networkContributorRole         = "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', '4d97b98b-1d4f-4787-a291-c67834d212e7')]"
 
   app_gateway_subnet_name = "appgwsubnet"
@@ -13,7 +14,7 @@ locals {
 
 #Resources 
 data "azurerm_resource_group" "rg" {
-  name     = "${var.resource_group_name}"
+  name = "${var.resource_group_name}"
 }
 
 # User Assigned Idntities 
@@ -208,4 +209,3 @@ resource "azurerm_kubernetes_cluster" "test" {
   depends_on = ["azurerm_virtual_network.test", "azurerm_application_gateway.network"]
   tags       = "${var.tags}"
 }
-

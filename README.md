@@ -14,10 +14,22 @@ Refer to the [tutorials](https://github.com/Azure/application-gateway-kubernetes
 ## Usage of the module 
 ```hcl
 
+
+resource "azurerm_resource_group" "test" {
+  name     = "testResourceGroup1"
+  location = "West US"
+
+  tags {
+    environment = "dev"
+    costcenter  = "it"
+  }
+}
+
+
 module "appgw-ingress-k8s-cluster" {
   source                              = "Azure/appgw-ingress-k8s-cluster/azurerm" 
   version                             = "0.1.0"
-  resource_group_name                 = "myapp"
+  resource_group_name                 = "${azurerm_resource_group.test.name}"
   location                            = "westus"
   aks_service_principal_app_id        = "<App ID of the service principal>"
   aks_service_principal_client_secret = "<Client secret of the service principal>"

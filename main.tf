@@ -1,4 +1,4 @@
-# # Locals block for hardcoded names. 
+# # Locals block for hardcoded names.
 locals {
   backend_address_pool_name      = "${azurerm_virtual_network.test.name}-beap"
   frontend_port_name             = "${azurerm_virtual_network.test.name}-feport"
@@ -12,12 +12,12 @@ locals {
   app_gateway_subnet_name = "appgwsubnet"
 }
 
-#Resources 
+#Resources
 data "azurerm_resource_group" "rg" {
   name = var.resource_group_name
 }
 
-# User Assigned Idntities 
+# User Assigned Idntities
 resource "azurerm_user_assigned_identity" "testIdentity" {
   resource_group_name = data.azurerm_resource_group.rg.name
   location            = data.azurerm_resource_group.rg.location
@@ -54,17 +54,17 @@ data "azurerm_subnet" "kubesubnet" {
 }
 
 data "azurerm_subnet" "appgwsubnet" {
-  name                 = "appgwsubnet" #Hardcoded to this name. 
+  name                 = "appgwsubnet" #Hardcoded to this name.
   virtual_network_name = azurerm_virtual_network.test.name
   resource_group_name  = data.azurerm_resource_group.rg.name
 }
 
-# Public Ip 
+# Public Ip
 resource "azurerm_public_ip" "test" {
   name                         = "publicIp1"
   location                     = data.azurerm_resource_group.rg.location
   resource_group_name          = data.azurerm_resource_group.rg.name
-  public_ip_address_allocation = "static"
+  allocation_method            = "Static"
   sku                          = "Standard"
 
   tags = var.tags

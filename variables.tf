@@ -50,30 +50,28 @@ variable "app_gateway_subnet_address_prefix" {
 
 variable "app_gateway_name" {
   description = "Name of the Application Gateway."
-  default = "ApplicationGateway1"
+  default     = "ApplicationGateway1"
 }
 
 variable "app_gateway_sku" {
   description = "Name of the Application Gateway SKU."
-  default = "Standard_v2"
+  default     = "Standard_v2"
 }
-
 
 variable "app_gateway_tier" {
   description = "Tier of the Application Gateway SKU."
-  default = "Standard_v2"
+  default     = "Standard_v2"
 }
-
 
 variable "aks_name" {
   description = "Name of the AKS cluster."
   default     = "aks-cluster1"
 }
+
 variable "aks_dns_prefix" {
   description = "Optional DNS prefix to use with hosted Kubernetes API server FQDN."
   default     = "aks"
 }
-
 
 variable "aks_agent_os_disk_size" {
   description = "Disk size (in GB) to provision for each of the agent pool nodes. This value ranges from 0 to 1023. Specifying 0 will apply the default disk size for that agentVMSize."
@@ -126,9 +124,10 @@ variable "public_ssh_key_path" {
 }
 
 variable "tags" {
-  type = "map"
+  type = map(string)
 
   default = {
     source = "terraform"
   }
 }
+

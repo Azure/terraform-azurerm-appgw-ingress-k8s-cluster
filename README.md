@@ -1,7 +1,6 @@
-
 The Application Gateway Ingress Controller allows the [Azure Application Gateway](https://azure.microsoft.com/en-us/services/application-gateway/) to be used as the ingress for an [Azure Kubernetes Service](https://azure.microsoft.com/en-us/services/kubernetes-service/) aka AKS cluster. As shown in the figure below, the ingress controller runs as a pod within the AKS cluster. It consumes [Kubernetes Ingress Resources](https://kubernetes.io/docs/concepts/services-networking/ingress/) and converts them to an Azure Application Gateway configuration which allows the gateway to load-balance traffic to Kubernetes pods.
 
-This module helps in deploying the necessary resources for the greenfield deployment of necessary resources for AKS cluster with Application Gateway as ingress controller. 
+This module helps in deploying the necessary resources for the greenfield deployment of necessary resources for AKS cluster with Application Gateway as ingress controller.
 
 ![Azure Application Gateway + AKS](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/docs/images/architecture.png)
 
@@ -11,7 +10,7 @@ This module helps in deploying the necessary resources for the greenfield deploy
 ## Usage
 Refer to the [tutorials](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/docs/tutorial.md) to understand how you can expose an AKS service over HTTP or HTTPS, to the internet, using an Azure Application Gateway.
 
-## Usage of the module 
+## Usage of the module
 ```hcl
 
 
@@ -27,14 +26,14 @@ resource "azurerm_resource_group" "test" {
 
 
 module "appgw-ingress-k8s-cluster" {
-  source                              = "Azure/appgw-ingress-k8s-cluster/azurerm" 
+  source                              = "Azure/appgw-ingress-k8s-cluster/azurerm"
   version                             = "0.1.0"
-  resource_group_name                 = "${azurerm_resource_group.test.name}"
+  resource_group_name                 = azurerm_resource_group.test.name
   location                            = "westus"
   aks_service_principal_app_id        = "<App ID of the service principal>"
   aks_service_principal_client_secret = "<Client secret of the service principal>"
   aks_service_principal_object_id     = "<Object ID of the service principal>"
-  
+
   tags = {
     environment = "dev"
     costcenter  = "it"
